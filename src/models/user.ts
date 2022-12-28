@@ -1,38 +1,41 @@
-import { Sequelize, DataTypes, CreationOptional, InferAttributes, InferCreationAttributes, Optional } from 'sequelize';
+import { DataTypes, CreationOptional, Optional } from 'sequelize';
 import { Model } from "sequelize-typescript";
 import db from "../instances/sequelize";
 
 export interface UserAttributes {
-    id?: number | null,
+    id?: string | null,
     name: string,
     email: string,
     password: string,
-    is_admin?: boolean
+    is_admin: boolean
 }
 
 interface UserCreationAttributes
   extends Optional<UserAttributes, 'id'> {}
 
-interface UserInstance extends Model<UserAttributes, UserCreationAttributes> {
-    // Some fields are optional when calling UserModel.create() or UserModel.build()
-    id: CreationOptional<number>;
+export interface UserInstance extends Model<UserAttributes, UserCreationAttributes> {
+    id: CreationOptional<string>;
+    name: string;
+    email: string;
+    password: string;
+    is_admin: boolean;
 }
 
 export const UserModel = db.define<UserInstance>('user', {
     id: {
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
         allowNull: false,
         primaryKey: true,
-        autoIncrement: true,
-        type: DataTypes.INTEGER,
     },
     name: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true
     },
     email: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
     },
     password: {
         type: DataTypes.STRING,
