@@ -18,7 +18,7 @@ app.use(errorHandler);
 
 app.listen(PORT, async() => {
     console.log(`App is running on port ${PORT}`);
-
+    
     try {
         await db.authenticate();
         await db.sync({force: false});
