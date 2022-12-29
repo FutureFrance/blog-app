@@ -12,3 +12,14 @@ As infrastructure i've used Node JS with the express framework, as database i us
 - Sequelize
 - Jwt
 - Docker / Docker-Compose
+
+*To run this container, just clone the repository on your PC.
+
+Now you can see there is a file called "info.txt" in this repository, now create a ".env" file and copy the contents of the "info.txt" file into the newly created ".env" file, BUT *Delete the text after the # (those are 'comments')*, and you can then just delete the "info.txt" file.
+
+Now you are ready to run the container (make sure you have installed docker on your pc), and while being in the main directory run these commands:
+
+```
+docker-compose build
+docker-compose up
+```

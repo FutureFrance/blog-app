@@ -1,0 +1,10 @@
+PORT=9001 # you can change the port the app is running on 
+DB_PORT=5432
+DB_NAME="blog"
+DB_HOST="db" # dont change this
+DB_USER="postgres"
+DB_PASSWORD="postgres" 
+ACCESSKEY="key1" # key to sign jwt token
+REFRESHKEY="key2" # key to sign jwt token
+SALT="4" # you can change this as a number this is bcrypt salt argument 
+WAIT_HOST=db:5432 # dont change this 
